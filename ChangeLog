@@ -1,3 +1,12 @@
-2004-13-01 0.01
+2004-19-04 0.2
+
+	* fixed namespace in POD
+	* fixed dates in ChangeLog
+	* TreeTagger tagset
+	* better selection algorithm for multiple maps
+	* normalize talana tags length before conversion
+	* additional talana maps
+
+2004-13-04 0.1
 
 	* first release

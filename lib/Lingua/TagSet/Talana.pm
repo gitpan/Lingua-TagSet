@@ -1,4 +1,4 @@
-# $Id: Talana.pm,v 1.1.1.1 2004/04/13 15:32:23 guillaume Exp $
+# $Id: Talana.pm,v 1.2 2004/04/16 13:26:54 guillaume Exp $
 package Lingua::TagSet::Talana;
 
 =head1 NAME
@@ -46,7 +46,7 @@ our @id_maps = (
     {
 	features => [ 'noun' ],
 	tokens   => [ 'N' ],
-	submap     => [ 'noun_type', 'gender', 'num' ]
+	submap   => [ 'noun_type', 'gender', 'num' ]
     },
     {
 	features => [ 'verb' ],
@@ -66,6 +66,22 @@ our @id_maps = (
     {
 	features => [ 'ponct' ],
 	tokens   => [ 'PONCT' ],
+    },
+    {
+	features => [ 'interj' ],
+	tokens   => [ 'I' ],
+    },
+    {
+	features => [ 'prep' ],
+	tokens   => [ 'P' ],
+    },
+    {
+	features => [ 'x' ],
+	tokens   => [ 'ET' ],
+    },
+    {
+	features => [ 'pref' ],
+	tokens   => [ 'PREF' ],
     },
 );
 
@@ -156,7 +172,8 @@ sub tag2structure {
 
     # split tag in parts
     my @tokens = split(/-/, $tag, 3);
-    push(@tokens, split(//, pop(@tokens)));
+    $#tokens = 2 if $#tokens < 2;
+    push(@tokens, split(//, pop(@tokens))) if $tokens[-1];
 
     # convert special values
     @tokens = map { defined $_ ? $_ : '' } @tokens;

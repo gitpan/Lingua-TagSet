@@ -108,7 +108,7 @@ D-poss-3mpp	cat@det det_type@poss pers@3 gender@masc num@pl numposs@pl
 D-poss-3mps	cat@det det_type@poss pers@3 gender@masc num@pl numposs@sing
 D-poss-3msp	cat@det det_type@poss pers@3 gender@masc num@sing numposs@pl
 D-poss-3mss	cat@det det_type@poss pers@3 gender@masc num@sing numposs@sing
-ET--	
+ET--	cat@x
 N-C-fp	cat@noun noun_type@common gender@fem num@pl
 N-C-fs	cat@noun noun_type@common gender@fem num@sing
 N-C-mp	cat@noun noun_type@common gender@masc num@pl
@@ -139,8 +139,8 @@ P+PRO-rel-3mp
 P+PRO-rel-3ms	
 PONCT-S-	cat@ponct
 PONCT-W-	cat@ponct
-PREF	
-PREF--	
+PREF	cat@pref
+PREF--	cat@pref
 PRO--1fp	cat@pron pers@1 gender@fem num@pl
 PRO--1fs	cat@pron pers@1 gender@fem num@sing
 PRO--1mp	cat@pron pers@1 gender@masc num@pl
@@ -168,7 +168,7 @@ PRO-ind-3fs	cat@pron pron_type@ind pers@3 gender@fem num@sing
 PRO-ind-3mp	cat@pron pron_type@ind pers@3 gender@masc num@pl
 PRO-ind-3ms	cat@pron pron_type@ind pers@3 gender@masc num@sing
 PRO-ind-ms	cat@pron pron_type@ind gender@masc num@sing
-PRO-int	cat@pron
+PRO-int	cat@pron pron_type@int
 PRO-int-	cat@pron pron_type@int
 PRO-int-3fp	cat@pron pron_type@int pers@3 gender@fem num@pl
 PRO-int-3fs	cat@pron pron_type@int pers@3 gender@fem num@sing

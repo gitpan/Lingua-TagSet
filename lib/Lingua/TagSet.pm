@@ -1,4 +1,4 @@
-# $Id: TagSet.pm,v 1.1.1.1 2004/04/13 15:32:23 guillaume Exp $
+# $Id: TagSet.pm,v 1.3 2004/04/19 08:30:15 guillaume Exp $
 package Lingua::TagSet;
 
 =head1 NAME
@@ -7,7 +7,7 @@ Lingua::TagSet - Natural language tagset conversion
 
 =head1 VERSION
 
-Version 0.1
+Version 0.2
 
 =head1 DESCRIPTION
 
@@ -16,15 +16,15 @@ language processing, using Lingua::Features as a pivot format
 
 =head1 SYNOPSIS
 
-    use Lingua::Features::Multext;
+    use Lingua::TagSet::Multext;
 
     # tagset to features conversions
-    my $struct = Lingua::Features::Multext->tag2structure($multext);
-    my $string = Lingua::Features::Multext->tag2string($multext);
+    my $struct = Lingua::TagSet::Multext->tag2structure($multext);
+    my $string = Lingua::TagSet::Multext->tag2string($multext);
 
     # features to tagset conversions
-    my $multext = Lingua::Features::Multext->string2tag($string);
-    my $multext = Lingua::Features::Multext->structure2tag($structure);
+    my $multext = Lingua::TagSet::Multext->string2tag($string);
+    my $multext = Lingua::TagSet::Multext->structure2tag($structure);
 
 =cut
 
@@ -33,7 +33,7 @@ use Lingua::Features;
 use strict;
 use warnings;
 
-our $VERSION = '0.1';
+our $VERSION = '0.2';
 
 my (%tag2string, %string2tag);
 memoize 'tag2string', SCALAR_CACHE => [ HASH => \%tag2string ];
@@ -136,7 +136,7 @@ sub tag2structure {
     my $table = $tokens_tables{$class};
 
     # find matching maps
-    my $id_maps = get_maps_from_tree($tree, $tokens);
+    my $id_maps = _get_maps_from_tree($tree, $tokens);
     return unless $id_maps;
 
     # select most relevant one
@@ -183,9 +183,6 @@ sub tag2structure {
 			    # consider undefined value
 			    splice @$tokens, $i, 0, undef;
 			    next;
-			} else {
-			    # consider unmapped value
-			    die "no mapped value for token $token in type $type_id";
 			}
 		    }
 		    foreach my $value (@values) {
@@ -226,29 +223,17 @@ sub structure2tag {
     }
 
     # find matching maps
-    my $id_maps = get_maps_from_tree($tree, [ $category, $subcategory ]);
+    my $id_maps = _get_maps_from_tree($tree, [ $category, $subcategory ]);
     return unless $id_maps;
 
     # select most relevant one
-    my @id_maps = @{$id_maps};
-    my $id_map;
-    if (@id_maps == 1) {
-	$id_map = $id_maps[0];
-    } else {
-	# prefer category-specific maps
-	@id_maps = grep { $_->{features}->[0] !~ /\|/ } @id_maps;
-	if (@id_maps == 1) {
-	    $id_map = $id_maps[0];
-	} else {
-	    # prefer exhaustive maps
-	    @id_maps = grep { $_->{submap} } @id_maps;
-	    if (@id_maps == 1) {
-		$id_map = $id_maps[0];
-	    } else {
-		$id_map = $id_maps[0];
-	    }
-	}
-    }
+    my $id_map = _select_alternative_maps(
+	$id_maps,
+	[
+	    sub { return $_->{features}->[0] !~ /\|/ }, # prefer specific maps
+	    sub { return $_->{submap} }                 # prefer exhaustive maps
+	]
+    );
 
     # compute first tokens
     my @tokens = @{$id_map->{tokens}};
@@ -306,7 +291,7 @@ sub structure2tag {
     return @tokens;
 }
 
-sub get_maps_from_tree {
+sub _get_maps_from_tree {
     my ($node, $tokens, $result) = @_;
 
     # extract first token
@@ -321,18 +306,50 @@ sub get_maps_from_tree {
     if ($token) {
 	# get further if specific pattern node exist
 	if ($node->{$token}) {
-	    return get_maps_from_tree($node->{$token}, $tokens, $result);
+	    return _get_maps_from_tree($node->{$token}, $tokens, $result);
 	}
 
 	# get further if generic pattern node exist
 	if ($node->{'.'}) {
-	    return get_maps_from_tree($node->{'.'}, $tokens, $result);
+	    return _get_maps_from_tree($node->{'.'}, $tokens, $result);
 	}
     }
 
     # otherwise return current result
     unshift @$tokens, $token;
     return $result;
+}
+
+sub _select_alternative_maps {
+    my ($maps, $functions) = @_;
+
+    # return unique solution
+    return $maps->[0] if $#$maps == 0;
+
+    my $function = shift @$functions;
+
+    # keep filtering while criterias available
+    if ($function) {
+	my @filtered_maps = grep { $function->($_) } @$maps;
+	return @filtered_maps ?
+	    _select_alternative_maps(\@filtered_maps, $functions) :
+	    _select_alternative_maps($maps, $functions) ;
+    }
+
+    # otherwise merge remaining mappings
+    my $max = 0;
+    for my $map (@$maps) {
+	$max = $#{$map->{tokens}} if $#{$map->{tokens}} > $max
+    }
+
+    my @tokens;
+    for (my $i = 0; $i <= $max; $i++) {
+	$tokens[$i] = join('|', map { $_->{tokens}->[$i] } @$maps);
+    }
+
+    return {
+	tokens => \@tokens
+    }
 }
 
 =head2 Lingua::TagSet->tag2string()
