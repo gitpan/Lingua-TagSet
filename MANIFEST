@@ -1,21 +1,23 @@
 ChangeLog
+acabit2feature
 feature2multext
 feature2talana
 feature2treetagger
+feature2acabit
 lib/Lingua/TagSet.pm
 lib/Lingua/TagSet/Multext.pm
 lib/Lingua/TagSet/Talana.pm
 lib/Lingua/TagSet/TreeTagger.pm
+lib/Lingua/TagSet/Acabit.pm
+lib/Lingua/TagSet/Tag.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml
-multext
 multext2feature
 README
+t/acabit.t
 t/multext.t
 t/talana.t
 t/treetagger.t
-talana
 talana2feature
-treetagger
 treetagger2feature

@@ -1,23 +1,23 @@
-adj_type@card cat@adj num@pl gender@fem	A-card-fp
-adj_type@card cat@adj num@pl gender@masc	A-card-mp
-adj_type@card cat@adj num@sing gender@fem	A-card-fs
-adj_type@card cat@adj num@sing gender@masc	A-card-ms
-adj_type@ind cat@adj num@pl gender@fem	A-ind-fp
-adj_type@ind cat@adj num@pl gender@masc	A-ind-mp
-adj_type@ind cat@adj num@sing gender@fem	A-ind-fs
-adj_type@ind cat@adj num@sing gender@masc	A-ind-ms
-adj_type@int cat@adj num@pl gender@fem	A-int-fp
-adj_type@int cat@adj num@pl gender@masc	A-int-mp
-adj_type@int cat@adj num@sing gender@fem	A-int-fs
-adj_type@int cat@adj num@sing gender@masc	A-int-ms
-adj_type@ord cat@adj num@pl gender@fem	A-ord-fp
-adj_type@ord cat@adj num@pl gender@masc	A-ord-mp
-adj_type@ord cat@adj num@sing gender@fem	A-ord-fs
-adj_type@ord cat@adj num@sing gender@masc	A-ord-ms
-adj_type@qual cat@adj num@pl gender@fem	A-qual-fp
-adj_type@qual cat@adj num@pl gender@masc	A-qual-mp
-adj_type@qual cat@adj num@sing gender@fem	A-qual-fs
-adj_type@qual cat@adj num@sing gender@masc	A-qual-ms
+cat@adj type@card num@pl gender@fem	A-card-fp
+cat@adj type@card num@pl gender@masc	A-card-mp
+cat@adj type@card num@sing gender@fem	A-card-fs
+cat@adj type@card num@sing gender@masc	A-card-ms
+cat@adj type@ind num@pl gender@fem	A-ind-fp
+cat@adj type@ind num@pl gender@masc	A-ind-mp
+cat@adj type@ind num@sing gender@fem	A-ind-fs
+cat@adj type@ind num@sing gender@masc	A-ind-ms
+cat@adj type@int num@pl gender@fem	A-int-fp
+cat@adj type@int num@pl gender@masc	A-int-mp
+cat@adj type@int num@sing gender@fem	A-int-fs
+cat@adj type@int num@sing gender@masc	A-int-ms
+cat@adj type@ord num@pl gender@fem	A-ord-fp
+cat@adj type@ord num@pl gender@masc	A-ord-mp
+cat@adj type@ord num@sing gender@fem	A-ord-fs
+cat@adj type@ord num@sing gender@masc	A-ord-ms
+cat@adj type@qual num@pl gender@fem	A-qual-fp
+cat@adj type@qual num@pl gender@masc	A-qual-mp
+cat@adj type@qual num@sing gender@fem	A-qual-fs
+cat@adj type@qual num@sing gender@masc	A-qual-ms
 cat@adv	ADV--
 cat@cc	C-C-
 cat@cs	C-S-
@@ -29,188 +29,188 @@ cat@ponct	PONCT--
 cat@pron	PRO--
 cat@pron num@pl gender@masc	PRO--mp
 cat@pron num@sing gender@masc	PRO--ms
-cat@pron num@sing pron_type@ind gender@masc	PRO-ind-ms
-cat@pron num@sing pron_type@int gender@masc	PRO-int-ms
-cat@pron pron_type@int	PRO-int-
+cat@pron num@sing type@ind gender@masc	PRO-ind-ms
+cat@pron num@sing type@int gender@masc	PRO-int-ms
+cat@pron type@int	PRO-int-
 cat@verb	V--
-det_type@card cat@det num@pl gender@fem	D-card-fp
-det_type@card cat@det num@pl gender@masc	D-card-mp
-det_type@card cat@det num@sing gender@fem	D-card-fs
-det_type@card cat@det num@sing gender@masc	D-card-ms
-det_type@def cat@det num@pl gender@fem	D-def-fp
-det_type@def cat@det num@pl gender@masc	D-def-mp
-det_type@def cat@det num@sing gender@fem	D-def-fs
-det_type@def cat@det num@sing gender@masc	D-def-ms
-det_type@dem cat@det num@pl gender@fem	D-dem-fp
-det_type@dem cat@det num@pl gender@masc	D-dem-mp
-det_type@dem cat@det num@sing gender@fem	D-dem-fs
-det_type@dem cat@det num@sing gender@masc	D-dem-ms
-det_type@excl cat@det num@sing gender@fem	D-excl-fs
-det_type@excl cat@det num@sing gender@masc	D-excl-ms
-det_type@ind cat@det num@pl gender@fem	D-ind-fp
-det_type@ind cat@det num@pl gender@masc	D-ind-mp
-det_type@ind cat@det num@sing gender@fem	D-ind-fs
-det_type@ind cat@det num@sing gender@masc	D-ind-ms
-det_type@int cat@det num@pl gender@fem	D-int-fp
-det_type@int cat@det num@sing gender@fem	D-int-fs
-det_type@part cat@det num@sing gender@fem	D-part-fs
-det_type@part cat@det num@sing gender@masc	D-part-ms
-det_type@poss pers@1 cat@det numposs@pl num@pl gender@fem	D-poss-1fpp
-det_type@poss pers@1 cat@det numposs@pl num@pl gender@masc	D-poss-1mpp
-det_type@poss pers@1 cat@det numposs@pl num@sing gender@fem	D-poss-1fsp
-det_type@poss pers@1 cat@det numposs@pl num@sing gender@masc	D-poss-1msp
-det_type@poss pers@1 cat@det numposs@sing num@pl gender@fem	D-poss-1fps
-det_type@poss pers@1 cat@det numposs@sing num@pl gender@masc	D-poss-1mps
-det_type@poss pers@1 cat@det numposs@sing num@sing gender@fem	D-poss-1fss
-det_type@poss pers@1 cat@det numposs@sing num@sing gender@masc	D-poss-1mss
-det_type@poss pers@2 cat@det numposs@pl num@pl gender@fem	D-poss-2fpp
-det_type@poss pers@2 cat@det numposs@pl num@pl gender@masc	D-poss-2mpp
-det_type@poss pers@2 cat@det numposs@pl num@sing gender@fem	D-poss-2fsp
-det_type@poss pers@2 cat@det numposs@pl num@sing gender@masc	D-poss-2msp
-det_type@poss pers@2 cat@det numposs@sing num@sing gender@masc	D-poss-2mss
-det_type@poss pers@3 cat@det numposs@pl num@pl gender@fem	D-poss-3fpp
-det_type@poss pers@3 cat@det numposs@pl num@pl gender@masc	D-poss-3mpp
-det_type@poss pers@3 cat@det numposs@pl num@sing gender@fem	D-poss-3fsp
-det_type@poss pers@3 cat@det numposs@pl num@sing gender@masc	D-poss-3msp
-det_type@poss pers@3 cat@det numposs@sing num@pl gender@fem	D-poss-3fps
-det_type@poss pers@3 cat@det numposs@sing num@pl gender@masc	D-poss-3mps
-det_type@poss pers@3 cat@det numposs@sing num@sing gender@fem	D-poss-3fss
-det_type@poss pers@3 cat@det numposs@sing num@sing gender@masc	D-poss-3mss
-noun_type@common cat@noun num@pl gender@fem	N-C-fp
-noun_type@common cat@noun num@pl gender@masc	N-C-mp
-noun_type@common cat@noun num@sing gender@fem	N-C-fs
-noun_type@common cat@noun num@sing gender@masc	N-C-ms
-noun_type@ord cat@noun num@pl gender@fem	N-card-fp
-noun_type@ord cat@noun num@pl gender@masc	N-card-mp
-noun_type@ord cat@noun num@sing gender@fem	N-card-fs
-noun_type@ord cat@noun num@sing gender@masc	N-card-ms
-noun_type@proper cat@noun gender@fem	N-P-f
-noun_type@proper cat@noun gender@masc	N-P-m
-noun_type@proper cat@noun num@pl	N-P-p
-noun_type@proper cat@noun num@pl gender@fem	N-P-fp
-noun_type@proper cat@noun num@pl gender@masc	N-P-mp
-noun_type@proper cat@noun num@sing	N-P-s
-noun_type@proper cat@noun num@sing gender@fem	N-P-fs
-noun_type@proper cat@noun num@sing gender@masc	N-P-ms
-pers@1 cat@pron num@pl gender@fem	PRO--1fp
-pers@1 cat@pron num@pl gender@masc	PRO--1mp
-pers@1 cat@pron num@pl pron_type@cli case@dat|gen|obl|acc gender@fem	CL--1fp
-pers@1 cat@pron num@pl pron_type@cli case@dat|gen|obl|acc gender@masc	CL--1mp
-pers@1 cat@pron num@pl pron_type@cli case@nom gender@fem	CL-suj-1fp
-pers@1 cat@pron num@pl pron_type@cli case@nom gender@masc	CL-suj-1mp
-pers@1 cat@pron num@pl pron_type@cli case@ref gender@fem	CL-refl-1fp
-pers@1 cat@pron num@pl pron_type@cli case@ref gender@masc	CL-refl-1mp
-pers@1 cat@pron numposs@sing num@pl pron_type@poss gender@masc	PRO-poss-1mps
-pers@1 cat@pron num@sing gender@fem	PRO--1fs
-pers@1 cat@pron num@sing gender@masc	PRO--1ms
-pers@1 cat@pron num@sing pron_type@cli case@dat|gen|obl|acc gender@fem	CL--1fs
-pers@1 cat@pron num@sing pron_type@cli case@dat|gen|obl|acc gender@masc	CL--1ms
-pers@1 cat@pron num@sing pron_type@cli case@nom gender@fem	CL-suj-1fs
-pers@1 cat@pron num@sing pron_type@cli case@nom gender@masc	CL-suj-1ms
-pers@1 cat@pron num@sing pron_type@cli case@ref gender@fem	CL-refl-1fs
-pers@1 cat@pron num@sing pron_type@cli case@ref gender@masc	CL-refl-1ms
-pers@2 cat@pron num@pl gender@fem	PRO--2fp
-pers@2 cat@pron num@pl gender@masc	PRO--2mp
-pers@2 cat@pron num@pl pron_type@cli case@dat|gen|obl|acc gender@fem	CL--2fp
-pers@2 cat@pron num@pl pron_type@cli case@dat|gen|obl|acc gender@masc	CL--2mp
-pers@2 cat@pron num@pl pron_type@cli case@nom gender@fem	CL-suj-2fp
-pers@2 cat@pron num@pl pron_type@cli case@nom gender@masc	CL-suj-2mp
-pers@2 cat@pron num@pl pron_type@cli case@ref gender@fem	CL-refl-2fp
-pers@2 cat@pron num@pl pron_type@cli case@ref gender@masc	CL-refl-2mp
-pers@2 cat@pron num@pl pron_type@poss gender@fem	PRO-poss-2fp
-pers@2 cat@pron num@sing gender@fem	PRO--2fs
-pers@2 cat@pron num@sing gender@masc	PRO--2ms
-pers@2 cat@pron num@sing pron_type@cli case@dat|gen|obl|acc gender@fem	CL--2fs
-pers@2 cat@pron num@sing pron_type@cli case@dat|gen|obl|acc gender@masc	CL--2ms
-pers@2 cat@pron num@sing pron_type@cli case@nom gender@fem	CL-suj-2fs
-pers@2 cat@pron num@sing pron_type@cli case@nom gender@masc	CL-suj-2ms
-pers@2 cat@pron num@sing pron_type@cli case@ref gender@fem	CL-refl-2fs
-pers@2 cat@pron num@sing pron_type@cli case@ref gender@masc	CL-refl-2ms
-pers@3 cat@pron num@pl gender@fem	PRO--3fp
-pers@3 cat@pron num@pl gender@masc	PRO--3mp
-pers@3 cat@pron num@pl pron_type@cli case@dat|gen|obl|acc gender@fem	CL--3fp
-pers@3 cat@pron num@pl pron_type@cli case@dat|gen|obl|acc gender@masc	CL--3mp
-pers@3 cat@pron num@pl pron_type@cli case@nom gender@fem	CL-suj-3fp
-pers@3 cat@pron num@pl pron_type@cli case@nom gender@masc	CL-suj-3mp
-pers@3 cat@pron num@pl pron_type@cli case@ref gender@fem	CL-refl-3fp
-pers@3 cat@pron num@pl pron_type@cli case@ref gender@masc	CL-refl-3mp
-pers@3 cat@pron num@pl pron_type@cli gender@fem	CL--3fp
-pers@3 cat@pron num@pl pron_type@dem gender@fem	PRO-dem-3fp
-pers@3 cat@pron num@pl pron_type@dem gender@masc	PRO-dem-3mp
-pers@3 cat@pron num@pl pron_type@ind gender@fem	PRO-ind-3fp
-pers@3 cat@pron num@pl pron_type@ind gender@masc	PRO-ind-3mp
-pers@3 cat@pron num@pl pron_type@int gender@fem	PRO-int-3fp
-pers@3 cat@pron num@pl pron_type@int gender@masc	PRO-int-3mp
-pers@3 cat@pron num@pl pron_type@poss	PRO-poss-3p
-pers@3 cat@pron num@pl pron_type@poss gender@fem	PRO-poss-3fp
-pers@3 cat@pron num@pl pron_type@poss gender@masc	PRO-poss-3mp
-pers@3 cat@pron num@pl pron_type@rel gender@fem	PRO-rel-3fp
-pers@3 cat@pron num@pl pron_type@rel gender@masc	PRO-rel-3mp
-pers@3 cat@pron numposs@sing num@pl pron_type@poss gender@fem	PRO-poss-3fps
-pers@3 cat@pron numposs@sing num@pl pron_type@poss gender@masc	PRO-poss-3mps
-pers@3 cat@pron num@sing gender@fem	PRO--3fs
-pers@3 cat@pron num@sing gender@masc	PRO--3ms
-pers@3 cat@pron num@sing pron_type@cli case@dat|gen|obl|acc gender@fem	CL--3fs
-pers@3 cat@pron num@sing pron_type@cli case@dat|gen|obl|acc gender@masc	CL--3ms
-pers@3 cat@pron num@sing pron_type@cli case@nom gender@fem	CL-suj-3fs
-pers@3 cat@pron num@sing pron_type@cli case@nom gender@masc	CL-suj-3ms
-pers@3 cat@pron num@sing pron_type@cli case@ref gender@fem	CL-refl-3fs
-pers@3 cat@pron num@sing pron_type@cli case@ref gender@masc	CL-refl-3ms
-pers@3 cat@pron num@sing pron_type@cli gender@masc	CL--3ms
-pers@3 cat@pron num@sing pron_type@dem gender@fem	PRO-dem-3fs
-pers@3 cat@pron num@sing pron_type@dem gender@masc	PRO-dem-3ms
-pers@3 cat@pron num@sing pron_type@ind gender@fem	PRO-ind-3fs
-pers@3 cat@pron num@sing pron_type@ind gender@masc	PRO-ind-3ms
-pers@3 cat@pron num@sing pron_type@int gender@fem	PRO-int-3fs
-pers@3 cat@pron num@sing pron_type@int gender@masc	PRO-int-3ms
-pers@3 cat@pron num@sing pron_type@poss gender@fem	PRO-poss-3fs
-pers@3 cat@pron num@sing pron_type@poss gender@masc	PRO-poss-3ms
-pers@3 cat@pron num@sing pron_type@rel gender@fem	PRO-rel-3fs
-pers@3 cat@pron num@sing pron_type@rel gender@masc	PRO-rel-3ms
-tense@fut pers@1 cat@verb num@pl mode@ind	V--F1p
-tense@fut pers@1 cat@verb num@sing mode@ind	V--F1s
-tense@fut pers@2 cat@verb num@pl mode@ind	V--F2p
-tense@fut pers@2 cat@verb num@sing mode@ind	V--F2s
-tense@fut pers@3 cat@verb num@pl mode@ind	V--F3p
-tense@fut pers@3 cat@verb num@sing mode@ind	V--F3s
-tense@imp pers@1 cat@verb num@pl mode@ind	V--I1p
-tense@imp pers@1 cat@verb num@pl mode@subj	V--T1p
-tense@imp pers@1 cat@verb num@sing mode@ind	V--I1s
-tense@imp pers@1 cat@verb num@sing mode@subj	V--T1s
-tense@imp pers@2 cat@verb num@pl mode@ind	V--I2p
-tense@imp pers@2 cat@verb num@pl mode@subj	V--T2p
-tense@imp pers@2 cat@verb num@sing mode@ind	V--I2s
-tense@imp pers@2 cat@verb num@sing mode@subj	V--T2s
-tense@imp pers@3 cat@verb num@pl mode@ind	V--I3p
-tense@imp pers@3 cat@verb num@pl mode@subj	V--T3p
-tense@imp pers@3 cat@verb num@sing mode@ind	V--I3s
-tense@imp pers@3 cat@verb num@sing mode@subj	V--T3s
-tense@past cat@verb mode@part	V--K
-tense@past pers@1 cat@verb num@pl mode@ind	V--J1p
-tense@past pers@1 cat@verb num@sing mode@ind	V--J1s
-tense@past pers@2 cat@verb num@pl mode@ind	V--J2p
-tense@past pers@2 cat@verb num@sing mode@ind	V--J2s
-tense@past pers@3 cat@verb num@pl mode@ind	V--J3p
-tense@past pers@3 cat@verb num@sing mode@ind	V--J3s
-tense@pres cat@verb mode@part	V--G
-tense@pres pers@1 cat@verb num@pl mode@cond	V--C1p
-tense@pres pers@1 cat@verb num@pl mode@imp	V--Y1p
-tense@pres pers@1 cat@verb num@pl mode@ind	V--P1p
-tense@pres pers@1 cat@verb num@pl mode@subj	V--S1p
-tense@pres pers@1 cat@verb num@sing mode@cond	V--C1s
-tense@pres pers@1 cat@verb num@sing mode@ind	V--P1s
-tense@pres pers@1 cat@verb num@sing mode@subj	V--S1s
-tense@pres pers@2 cat@verb num@pl mode@cond	V--C2p
-tense@pres pers@2 cat@verb num@pl mode@imp	V--Y2p
-tense@pres pers@2 cat@verb num@pl mode@ind	V--P2p
-tense@pres pers@2 cat@verb num@pl mode@subj	V--S2p
-tense@pres pers@2 cat@verb num@sing mode@cond	V--C2s
-tense@pres pers@2 cat@verb num@sing mode@imp	V--Y2s
-tense@pres pers@2 cat@verb num@sing mode@ind	V--P2s
-tense@pres pers@2 cat@verb num@sing mode@subj	V--S2s
-tense@pres pers@3 cat@verb num@pl mode@cond	V--C3p
-tense@pres pers@3 cat@verb num@pl mode@ind	V--P3p
-tense@pres pers@3 cat@verb num@pl mode@subj	V--S3p
-tense@pres pers@3 cat@verb num@sing mode@cond	V--C3s
-tense@pres pers@3 cat@verb num@sing mode@ind	V--P3s
-tense@pres pers@3 cat@verb num@sing mode@subj	V--S3s
+cat@det type@card num@pl gender@fem	D-card-fp
+cat@det type@card num@pl gender@masc	D-card-mp
+cat@det type@card num@sing gender@fem	D-card-fs
+cat@det type@card num@sing gender@masc	D-card-ms
+cat@det type@art num@pl gender@fem def@def	D-def-fp
+cat@det type@art num@pl gender@masc def@def	D-def-mp
+cat@det type@art num@sing gender@fem def@def	D-def-fs
+cat@det type@art num@sing gender@masc def@def	D-def-ms
+cat@det type@dem num@pl gender@fem	D-dem-fp
+cat@det type@dem num@pl gender@masc	D-dem-mp
+cat@det type@dem num@sing gender@fem	D-dem-fs
+cat@det type@dem num@sing gender@masc	D-dem-ms
+cat@det type@excl num@sing gender@fem	D-excl-fs
+cat@det type@excl num@sing gender@masc	D-excl-ms
+cat@det type@art num@pl gender@fem def@ind	D-ind-fp
+cat@det type@art num@pl gender@masc def@ind	D-ind-mp
+cat@det type@art num@sing gender@fem def@ind	D-ind-fs
+cat@det type@art num@sing gender@masc def@ind	D-ind-ms
+cat@det type@int num@pl gender@fem	D-int-fp
+cat@det type@int num@sing gender@fem	D-int-fs
+cat@det type@part num@sing gender@fem	D-part-fs
+cat@det type@part num@sing gender@masc	D-part-ms
+cat@det type@poss pers@1 numposs@pl num@pl gender@fem	D-poss-1fpp
+cat@det type@poss pers@1 numposs@pl num@pl gender@masc	D-poss-1mpp
+cat@det type@poss pers@1 numposs@pl num@sing gender@fem	D-poss-1fsp
+cat@det type@poss pers@1 numposs@pl num@sing gender@masc	D-poss-1msp
+cat@det type@poss pers@1 numposs@sing num@pl gender@fem	D-poss-1fps
+cat@det type@poss pers@1 numposs@sing num@pl gender@masc	D-poss-1mps
+cat@det type@poss pers@1 numposs@sing num@sing gender@fem	D-poss-1fss
+cat@det type@poss pers@1 numposs@sing num@sing gender@masc	D-poss-1mss
+cat@det type@poss pers@2 numposs@pl num@pl gender@fem	D-poss-2fpp
+cat@det type@poss pers@2 numposs@pl num@pl gender@masc	D-poss-2mpp
+cat@det type@poss pers@2 numposs@pl num@sing gender@fem	D-poss-2fsp
+cat@det type@poss pers@2 numposs@pl num@sing gender@masc	D-poss-2msp
+cat@det type@poss pers@2 numposs@sing num@sing gender@masc	D-poss-2mss
+cat@det type@poss pers@3 numposs@pl num@pl gender@fem	D-poss-3fpp
+cat@det type@poss pers@3 numposs@pl num@pl gender@masc	D-poss-3mpp
+cat@det type@poss pers@3 numposs@pl num@sing gender@fem	D-poss-3fsp
+cat@det type@poss pers@3 numposs@pl num@sing gender@masc	D-poss-3msp
+cat@det type@poss pers@3 numposs@sing num@pl gender@fem	D-poss-3fps
+cat@det type@poss pers@3 numposs@sing num@pl gender@masc	D-poss-3mps
+cat@det type@poss pers@3 numposs@sing num@sing gender@fem	D-poss-3fss
+cat@det type@poss pers@3 numposs@sing num@sing gender@masc	D-poss-3mss
+cat@noun type@common num@pl gender@fem	N-C-fp
+cat@noun type@common num@pl gender@masc	N-C-mp
+cat@noun type@common num@sing gender@fem	N-C-fs
+cat@noun type@common num@sing gender@masc	N-C-ms
+cat@noun type@ord num@pl gender@fem	N-card-fp
+cat@noun type@ord num@pl gender@masc	N-card-mp
+cat@noun type@ord num@sing gender@fem	N-card-fs
+cat@noun type@ord num@sing gender@masc	N-card-ms
+cat@noun type@proper gender@fem	N-P-f
+cat@noun type@proper gender@masc	N-P-m
+cat@noun type@proper num@pl	N-P-p
+cat@noun type@proper num@pl gender@fem	N-P-fp
+cat@noun type@proper num@pl gender@masc	N-P-mp
+cat@noun type@proper num@sing	N-P-s
+cat@noun type@proper num@sing gender@fem	N-P-fs
+cat@noun type@proper num@sing gender@masc	N-P-ms
+cat@pron pers@1 num@pl gender@fem	PRO--1fp
+cat@pron pers@1 num@pl gender@masc	PRO--1mp
+cat@pron pers@1 num@pl type@cli case@dat|gen|obl|acc gender@fem	CL-obj-1fp
+cat@pron pers@1 num@pl type@cli case@dat|gen|obl|acc gender@masc	CL-obj-1mp
+cat@pron pers@1 num@pl type@cli case@nom gender@fem	CL-suj-1fp
+cat@pron pers@1 num@pl type@cli case@nom gender@masc	CL-suj-1mp
+cat@pron pers@1 num@pl type@cli case@ref gender@fem	CL-refl-1fp
+cat@pron pers@1 num@pl type@cli case@ref gender@masc	CL-refl-1mp
+cat@pron pers@1 numposs@sing num@pl type@poss gender@masc	PRO-poss-1mps
+cat@pron pers@1 num@sing gender@fem	PRO--1fs
+cat@pron pers@1 num@sing gender@masc	PRO--1ms
+cat@pron pers@1 num@sing type@cli case@dat|gen|obl|acc gender@fem	CL-obj-1fs
+cat@pron pers@1 num@sing type@cli case@dat|gen|obl|acc gender@masc	CL-obj-1ms
+cat@pron pers@1 num@sing type@cli case@nom gender@fem	CL-suj-1fs
+cat@pron pers@1 num@sing type@cli case@nom gender@masc	CL-suj-1ms
+cat@pron pers@1 num@sing type@cli case@ref gender@fem	CL-refl-1fs
+cat@pron pers@1 num@sing type@cli case@ref gender@masc	CL-refl-1ms
+cat@pron pers@2 num@pl gender@fem	PRO--2fp
+cat@pron pers@2 num@pl gender@masc	PRO--2mp
+cat@pron pers@2 num@pl type@cli case@dat|gen|obl|acc gender@fem	CL-obj-2fp
+cat@pron pers@2 num@pl type@cli case@dat|gen|obl|acc gender@masc	CL-obj-2mp
+cat@pron pers@2 num@pl type@cli case@nom gender@fem	CL-suj-2fp
+cat@pron pers@2 num@pl type@cli case@nom gender@masc	CL-suj-2mp
+cat@pron pers@2 num@pl type@cli case@ref gender@fem	CL-refl-2fp
+cat@pron pers@2 num@pl type@cli case@ref gender@masc	CL-refl-2mp
+cat@pron pers@2 num@pl type@poss gender@fem	PRO-poss-2fp
+cat@pron pers@2 num@sing gender@fem	PRO--2fs
+cat@pron pers@2 num@sing gender@masc	PRO--2ms
+cat@pron pers@2 num@sing type@cli case@dat|gen|obl|acc gender@fem	CL-obj-2fs
+cat@pron pers@2 num@sing type@cli case@dat|gen|obl|acc gender@masc	CL-obj-2ms
+cat@pron pers@2 num@sing type@cli case@nom gender@fem	CL-suj-2fs
+cat@pron pers@2 num@sing type@cli case@nom gender@masc	CL-suj-2ms
+cat@pron pers@2 num@sing type@cli case@ref gender@fem	CL-refl-2fs
+cat@pron pers@2 num@sing type@cli case@ref gender@masc	CL-refl-2ms
+cat@pron pers@3 num@pl gender@fem	PRO--3fp
+cat@pron pers@3 num@pl gender@masc	PRO--3mp
+cat@pron pers@3 num@pl type@cli case@dat|gen|obl|acc gender@fem	CL-obj-3fp
+cat@pron pers@3 num@pl type@cli case@dat|gen|obl|acc gender@masc	CL-obj-3mp
+cat@pron pers@3 num@pl type@cli case@nom gender@fem	CL-suj-3fp
+cat@pron pers@3 num@pl type@cli case@nom gender@masc	CL-suj-3mp
+cat@pron pers@3 num@pl type@cli case@ref gender@fem	CL-refl-3fp
+cat@pron pers@3 num@pl type@cli case@ref gender@masc	CL-refl-3mp
+cat@pron pers@3 num@pl type@cli gender@fem	CL--3fp
+cat@pron pers@3 num@pl type@dem gender@fem	PRO-dem-3fp
+cat@pron pers@3 num@pl type@dem gender@masc	PRO-dem-3mp
+cat@pron pers@3 num@pl type@ind gender@fem	PRO-ind-3fp
+cat@pron pers@3 num@pl type@ind gender@masc	PRO-ind-3mp
+cat@pron pers@3 num@pl type@int gender@fem	PRO-int-3fp
+cat@pron pers@3 num@pl type@int gender@masc	PRO-int-3mp
+cat@pron pers@3 num@pl type@poss	PRO-poss-3p
+cat@pron pers@3 num@pl type@poss gender@fem	PRO-poss-3fp
+cat@pron pers@3 num@pl type@poss gender@masc	PRO-poss-3mp
+cat@pron pers@3 num@pl type@rel gender@fem	PRO-rel-3fp
+cat@pron pers@3 num@pl type@rel gender@masc	PRO-rel-3mp
+cat@pron pers@3 numposs@sing num@pl type@poss gender@fem	PRO-poss-3fps
+cat@pron pers@3 numposs@sing num@pl type@poss gender@masc	PRO-poss-3mps
+cat@pron pers@3 num@sing gender@fem	PRO--3fs
+cat@pron pers@3 num@sing gender@masc	PRO--3ms
+cat@pron pers@3 num@sing type@cli case@dat|gen|obl|acc gender@fem	CL-obj-3fs
+cat@pron pers@3 num@sing type@cli case@dat|gen|obl|acc gender@masc	CL-obj-3ms
+cat@pron pers@3 num@sing type@cli case@nom gender@fem	CL-suj-3fs
+cat@pron pers@3 num@sing type@cli case@nom gender@masc	CL-suj-3ms
+cat@pron pers@3 num@sing type@cli case@ref gender@fem	CL-refl-3fs
+cat@pron pers@3 num@sing type@cli case@ref gender@masc	CL-refl-3ms
+cat@pron pers@3 num@sing type@cli gender@masc	CL--3ms
+cat@pron pers@3 num@sing type@dem gender@fem	PRO-dem-3fs
+cat@pron pers@3 num@sing type@dem gender@masc	PRO-dem-3ms
+cat@pron pers@3 num@sing type@ind gender@fem	PRO-ind-3fs
+cat@pron pers@3 num@sing type@ind gender@masc	PRO-ind-3ms
+cat@pron pers@3 num@sing type@int gender@fem	PRO-int-3fs
+cat@pron pers@3 num@sing type@int gender@masc	PRO-int-3ms
+cat@pron pers@3 num@sing type@poss gender@fem	PRO-poss-3fs
+cat@pron pers@3 num@sing type@poss gender@masc	PRO-poss-3ms
+cat@pron pers@3 num@sing type@rel gender@fem	PRO-rel-3fs
+cat@pron pers@3 num@sing type@rel gender@masc	PRO-rel-3ms
+cat@verb tense@fut pers@1 num@pl mode@ind	V--F1p
+cat@verb tense@fut pers@1 num@sing mode@ind	V--F1s
+cat@verb tense@fut pers@2 num@pl mode@ind	V--F2p
+cat@verb tense@fut pers@2 num@sing mode@ind	V--F2s
+cat@verb tense@fut pers@3 num@pl mode@ind	V--F3p
+cat@verb tense@fut pers@3 num@sing mode@ind	V--F3s
+cat@verb tense@imp pers@1 num@pl mode@ind	V--I1p
+cat@verb tense@imp pers@1 num@pl mode@subj	V--T1p
+cat@verb tense@imp pers@1 num@sing mode@ind	V--I1s
+cat@verb tense@imp pers@1 num@sing mode@subj	V--T1s
+cat@verb tense@imp pers@2 num@pl mode@ind	V--I2p
+cat@verb tense@imp pers@2 num@pl mode@subj	V--T2p
+cat@verb tense@imp pers@2 num@sing mode@ind	V--I2s
+cat@verb tense@imp pers@2 num@sing mode@subj	V--T2s
+cat@verb tense@imp pers@3 num@pl mode@ind	V--I3p
+cat@verb tense@imp pers@3 num@pl mode@subj	V--T3p
+cat@verb tense@imp pers@3 num@sing mode@ind	V--I3s
+cat@verb tense@imp pers@3 num@sing mode@subj	V--T3s
+cat@verb tense@past mode@part	V--K
+cat@verb tense@past pers@1 num@pl mode@ind	V--J1p
+cat@verb tense@past pers@1 num@sing mode@ind	V--J1s
+cat@verb tense@past pers@2 num@pl mode@ind	V--J2p
+cat@verb tense@past pers@2 num@sing mode@ind	V--J2s
+cat@verb tense@past pers@3 num@pl mode@ind	V--J3p
+cat@verb tense@past pers@3 num@sing mode@ind	V--J3s
+cat@verb tense@pres mode@part	V--G
+cat@verb tense@pres pers@1 num@pl mode@cond	V--C1p
+cat@verb tense@pres pers@1 num@pl mode@imp	V--Y1p
+cat@verb tense@pres pers@1 num@pl mode@ind	V--P1p
+cat@verb tense@pres pers@1 num@pl mode@subj	V--S1p
+cat@verb tense@pres pers@1 num@sing mode@cond	V--C1s
+cat@verb tense@pres pers@1 num@sing mode@ind	V--P1s
+cat@verb tense@pres pers@1 num@sing mode@subj	V--S1s
+cat@verb tense@pres pers@2 num@pl mode@cond	V--C2p
+cat@verb tense@pres pers@2 num@pl mode@imp	V--Y2p
+cat@verb tense@pres pers@2 num@pl mode@ind	V--P2p
+cat@verb tense@pres pers@2 num@pl mode@subj	V--S2p
+cat@verb tense@pres pers@2 num@sing mode@cond	V--C2s
+cat@verb tense@pres pers@2 num@sing mode@imp	V--Y2s
+cat@verb tense@pres pers@2 num@sing mode@ind	V--P2s
+cat@verb tense@pres pers@2 num@sing mode@subj	V--S2s
+cat@verb tense@pres pers@3 num@pl mode@cond	V--C3p
+cat@verb tense@pres pers@3 num@pl mode@ind	V--P3p
+cat@verb tense@pres pers@3 num@pl mode@subj	V--S3p
+cat@verb tense@pres pers@3 num@sing mode@cond	V--C3s
+cat@verb tense@pres pers@3 num@sing mode@ind	V--P3s
+cat@verb tense@pres pers@3 num@sing mode@subj	V--S3s

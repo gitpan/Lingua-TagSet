@@ -1,4 +1,4 @@
-# $Id: TreeTagger.pm,v 1.1 2004/04/16 13:25:28 guillaume Exp $
+# $Id: TreeTagger.pm,v 1.4 2004/06/11 11:36:57 rousse Exp $
 package Lingua::TagSet::TreeTagger;
 
 =head1 NAME
@@ -12,142 +12,158 @@ use strict;
 
 our @id_maps = (
     {
-	features => [ 'abr' ],
+	features => { cat => 'abr' },
 	tokens   => [ 'ABR' ],
     },
     {
-	features => [ 'adj' ],
+	features => { cat => 'adj' },
 	tokens   => [ 'ADJ' ],
     },
     {
-	features => [ 'adv' ],
+	features => { cat => 'adv' },
 	tokens   => [ 'ADV' ]
     },
     {
-	features => [ 'det' ],
-	tokens   => [ 'DET' ],
-	submap   => [ 'det_type' ]
+	features => { cat => 'det' },
+	tokens   => [ 'DET', undef ],
+	submap   => [
+	    1 => 'type'
+	]
     },
     {
-	features => [ 'interj' ],
+	features => { cat => 'interj' },
 	tokens   => [ 'INT' ],
     },
     {
-	features => [ 'cc|cs' ],
+	features => { cat => [ 'cc', 'cs' ] },
 	tokens   => [ 'KON' ],
     },
     {
-	features => [ 'noun', 'common' ],
+	features => { cat => 'noun', type => 'common' },
 	tokens   => [ 'NOM' ],
     },
     {
-	features => [ 'noun', 'proper' ],
+	features => { cat => 'noun', type => 'proper' },
 	tokens   => [ 'NAM' ],
     },
     {
-	features => [ 'noun|adj|det' ],
+	features => { cat => [ 'noun', 'adj', 'det' ] },
 	tokens   => [ 'NUM' ],
     },
     {
-	features => [ 'pron' ],
-	tokens   => [ 'PRO' ],
-	submap   => [ 'pron_type' ]
+	features => { cat => 'pron' },
+	tokens   => [ 'PRO', undef ],
+	submap   => [
+	    1 => 'type'
+	]
     },
     {
-	features => [ 'ponct' ],
+	features => { cat => 'ponct' },
 	tokens   => [ 'PUN' ],
     },
     {
-	features => [ 'prep' ],
+	features => { cat => 'prep' },
 	tokens   => [ 'PRP' ],
     },
     {
-	features => [ 'ponct' ],
+	features => { cat => 'ponct' },
 	tokens   => [ 'SENT' ],
     },
     {
-	features => [ 'x' ],
+	features => { cat => 'x' },
 	tokens   => [ 'SYM' ],
     },
     {
-	features => [ 'verb' ],
-	tokens   => [ 'VER' ],
-	submap   => [ 'mode&tense' ]
+	features => { cat => 'verb' },
+	tokens   => [ 'VER', undef ],
+	submap   => [ 
+	    1 => 'mode',
+	    1 => 'tense'
+	]
     },
 );
 
 our %value_maps = (
-    det_type_type => [
-	[ qw/POS poss/ ],
+    det => [
+	POS => 'poss',
     ],
-    pron_type_type => [
-    	[ qw/DEM dem/ ],
-	[ qw/REL rel/ ],
-	[ qw/IND ind/ ],
-	[ qw/POS poss/ ],
-	[ qw/PER pers/ ],
+    pron => [
+    	DEM => 'dem',
+	REL => 'rel',
+	IND => 'ind',
+	POS => 'poss',
+	PER => 'pers',
     ],
-    mode_type => [ 
-	[ qw/cond cond/ ],
-    	[ qw/futu ind/ ],
-	[ qw/impe imp/ ],
-	[ qw/impf ind/ ],
-	[ qw/infi inf/ ],
-	[ qw/pper part/ ],
-	[ qw/ppre part/ ],
-	[ qw/pres ind/ ],
-	[ qw/simp ind/ ],
-	[ qw/subi subj/ ],
-	[ qw/subp subj/ ],
+    mode => [ 
+	cond => 'cond',
+    	futu => 'ind',
+	impe => 'imp',
+	impf => 'ind',
+	infi => 'inf',
+	pper => 'part',
+	ppre => 'part',
+	pres => 'ind',
+	simp => 'ind',
+	subi => 'subj',
+	subp => 'subj',
     ],
-    tense_type => [
-    	[ qw/futu fut/ ],
-	[ qw/impe pres/ ],
-	[ qw/impf imp/ ],
-	[ qw/infi pres/ ],
-	[ qw/pper past/ ],
-	[ qw/ppre pres/ ],
-	[ qw/pres pres/ ],
-	[ qw/simp past/ ],
-	[ qw/subi imp/ ],
-	[ qw/subp pres/ ],
+    tense => [
+	cond => 'pres',
+    	futu => 'fut',
+	impe => 'pres',
+	impf => 'imp',
+	infi => 'pres',
+	pper => 'past',
+	ppre => 'pres',
+	pres => 'pres',
+	simp => 'past',
+	subi => 'imp',
+	subp => 'pres',
     ],
 );
 
 __PACKAGE__->_init();
 
 sub tag2structure {
-    my ($class, $tag) = @_;
+    my ($class, $tag_string) = @_;
 
     # fail fast
-    return unless $tag;
+    return unless $tag_string;
 
-    # split tag in parts
-    my @tokens = split(/:/, $tag, 2);
+    # split tag in tokens
+    my @tokens = split(/:/, $tag_string, 2);
 
     # convert special values
-    @tokens = map { defined $_ ? $_ : '' } @tokens;
+    @tokens = map {
+	$_ ? [ $_ ] : undef
+    } @tokens;
+
+    my $tag = Lingua::TagSet::Tag->new(@tokens);
 
     # call generic routine
-    return $class->SUPER::tag2structure(\@tokens);
+    return $class->SUPER::tag2structure($tag);
 }
 
 sub structure2tag {
     my ($class, $structure) = @_;
 
     # call generic routine
-    my @tokens = $class->SUPER::structure2tag($structure);
+    my $tag    = $class->SUPER::structure2tag($structure);
+    my @tokens = $tag->get_tokens();
 
-    # handle special cases
-    @tokens =
-	map { $_ ? $_ : '' }
-	map { ref $_ eq 'ARRAY' ? $_->[0] : $_ }
-	@tokens;
+    # convert special values
+    @tokens = map {
+	$_ ?       # known value
+	    $#$_ ? # multiple values
+		join('|', @$_) :
+		$_->[0]
+	    : ''
+    } @tokens;
 
     # join tokens in tag
-    my $tag = join(':', @tokens);
+    my $tag_string = join(':', @tokens);
 
-    return $tag;
+    return $tag_string;
 }
 
 =head1 COPYRIGHT AND LICENSE

@@ -1,3 +1,9 @@
+2004-11-06 0.3
+	
+	* updated for new Lingua::Features
+	* Acabit tagset
+	* exhaustive research of matching mappings
+
 2004-19-04 0.2
 
 	* fixed namespace in POD

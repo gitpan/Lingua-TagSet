@@ -3,20 +3,20 @@ cat@adj	ADJ
 cat@adv	ADV
 cat@cc|cs	KON
 cat@det	DET:
-cat@det det_type@poss	DET:POS
+cat@det type@poss	DET:POS
 cat@interj	INT
-cat@noun|adj|det	NUM
-cat@noun noun_type@common	NOM
-cat@noun noun_type@proper	NAM
-cat@ponct	PUN
+cat@adj|det|noun	DET:
+cat@noun type@common	NOM
+cat@noun type@proper	NAM
+cat@ponct	PUN|SENT
 cat@prep	PRP
 cat@pron	PRO:
-cat@pron pron_type@dem	PRO:DEM
-cat@pron pron_type@ind	PRO:IND
-cat@pron pron_type@pers	PRO:PER
-cat@pron pron_type@poss	PRO:POS
-cat@pron pron_type@rel	PRO:REL
-cat@verb mode@cond	VER:
+cat@pron type@dem	PRO:DEM
+cat@pron type@ind	PRO:IND
+cat@pron type@pers	PRO:PER
+cat@pron type@poss	PRO:POS
+cat@pron type@rel	PRO:REL
+cat@verb mode@cond	VER:cond
 cat@verb mode@imp tense@pres	VER:impe
 cat@verb mode@ind tense@fut	VER:futu
 cat@verb mode@ind tense@imp	VER:impf

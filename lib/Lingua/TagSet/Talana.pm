@@ -1,4 +1,4 @@
-# $Id: Talana.pm,v 1.2 2004/04/16 13:26:54 guillaume Exp $
+# $Id: Talana.pm,v 1.5 2004/06/11 11:38:18 rousse Exp $
 package Lingua::TagSet::Talana;
 
 =head1 NAME
@@ -12,195 +12,276 @@ use strict;
 
 our @id_maps = (
     {
-	features => [ 'adj' ],
-	tokens   => [ 'A' ],
-	submap   => [ 'adj_type', 'gender', 'num' ]
+	features => { cat => 'adj' },
+	tokens   => [ 'A', undef, undef, undef ],
+	submap   => [
+	    1 => 'type',
+	    2 => 'gender',
+	    3 => 'num'
+	]
     },
     {
-	features => [ 'adv' ],
+	features => { cat => 'adv' },
 	tokens   => [ 'ADV' ]
     },
     {
-	features => [ 'pron' , 'cli' ],
-	tokens   => [ 'CL' ],
-	submap   => [ 'case', 'pers', 'gender', 'num' ]
+	features => { cat => 'pron', type => 'cli' },
+	tokens   => [ 'CL', undef, undef, undef, undef ],
+	submap   => [
+	    1 => 'case',
+	    2 => 'pers',
+	    3 => 'gender',
+	    4 => 'num'
+	]
     },
     {
-	features => [ 'cc' ],
+	features => { cat => 'cc' },
 	tokens   => [ 'C', 'C' ]
     },
     { 
-	features => [ 'cs' ],
+	features => { cat => 'cs' },
 	tokens   => [ 'C', 'S' ]
     },
     {
-	features => [ 'det' ],
-	tokens   => [ 'D' ],
-	submap   => [ 'det_type', 'gender', 'num' ]
+	features => { cat => 'det' },
+	tokens   => [ 'D', undef, undef, undef ],
+	submap   => [
+	    1 => 'type',
+	    2 => 'gender',
+	    3 => 'num'
+	]
      },
      {
-	features => [ 'det', 'poss' ],
-	tokens   => [ 'D', 'poss' ],
-	submap   => [ 'pers', 'gender', 'num', 'numposs' ]
+	features => { cat => 'det', type => 'art', def => 'def' },
+	tokens   => [ 'D', 'def', undef, undef ],
+	submap   => [
+	    2 => 'gender',
+	    3 => 'num'
+	]
+     },
+     {
+	features => { cat => 'det', type => 'art', def => 'ind' },
+	tokens   => [ 'D', 'ind', undef, undef ],
+	submap   => [
+	    2 => 'gender',
+	    3 => 'num'
+	]
+     },
+     {
+	features => { cat => 'det', type => 'poss' },
+	tokens   => [ 'D', 'poss', undef, undef, undef, undef ],
+	submap   => [
+	    2 => 'pers',
+	    3 => 'gender',
+	    4 => 'num',
+	    5 => 'numposs'
+	]
      },
     {
-	features => [ 'noun' ],
-	tokens   => [ 'N' ],
-	submap   => [ 'noun_type', 'gender', 'num' ]
+	features => { cat => 'noun' },
+	tokens   => [ 'N', undef, undef, undef ],
+	submap   => [
+	    1 => 'type',
+	    2 => 'gender',
+	    3 => 'num'
+	]
     },
     {
-	features => [ 'verb' ],
-	tokens   => [ 'V' ],
-	submap   => [ undef, 'mode&tense', 'pers', 'num' ]
+	features => { cat => 'verb' },
+	tokens   => [ 'V', undef, undef, undef, undef ],
+	submap   => [
+	    2 => 'mode',
+	    2 => 'tense',
+	    3 => 'pers',
+	    4 => 'num'
+	]
     },
     {
-	features => [ 'pron' ],
-	tokens   => [ 'PRO' ],
-	submap   => [ 'pron_type', 'pers', 'gender', 'num' ]
+	features => { cat => 'verb', mode => 'part', tense => 'past' },
+	tokens   => [ 'V', undef, 'K', undef, undef ],
+	submap   => [
+	    3 => 'gender',
+	    4 => 'num'
+	]
     },
     {
-	features => [ 'pron', 'poss' ],
-	tokens   => [ 'PRO', 'poss' ],
-	submap   => [ 'pers', 'gender', 'num', 'numposs' ]
+	features => { cat => 'verb', mode => 'part', tense => 'pres' },
+	tokens   => [ 'V', undef, 'G', undef, undef ],
+	submap   => [
+	    3 => 'gender',
+	    4 => 'num'
+	]
     },
     {
-	features => [ 'ponct' ],
+	features => { cat => 'verb', mode => 'inf' },
+	tokens   => [ 'V', undef, 'W' ],
+    },
+    {
+	features => { cat => 'pron' },
+	tokens   => [ 'PRO', undef, undef, undef, undef ],
+	submap   => [
+	    1 => 'type',
+	    2 => 'pers',
+	    3 => 'gender',
+	    4 => 'num'
+	]
+    },
+    {
+	features => { cat => 'pron', type => 'poss' },
+	tokens   => [ 'PRO', 'poss', undef, undef, undef, undef ],
+	submap   => [
+	    2 => 'pers',
+	    3 => 'gender',
+	    4 => 'num',
+	    5 => 'numposs'
+	]
+    },
+    {
+	features => { cat => 'ponct' },
 	tokens   => [ 'PONCT' ],
     },
     {
-	features => [ 'interj' ],
+	features => { cat => 'interj' },
 	tokens   => [ 'I' ],
     },
     {
-	features => [ 'prep' ],
+	features => { cat => 'prep' },
 	tokens   => [ 'P' ],
     },
     {
-	features => [ 'x' ],
+	features => { cat => 'x' },
 	tokens   => [ 'ET' ],
     },
     {
-	features => [ 'pref' ],
+	features => { cat => 'pref' },
 	tokens   => [ 'PREF' ],
     },
 );
 
 our %value_maps = (
-    det_type_type => [
-	[ qw/dem dem/ ],
-	[ qw/ind ind/ ],
-	[ qw/poss poss/ ],
-	[ qw/int int/ ],
-	[ qw/excl excl/ ],
-	[ qw/part part/ ],
-	[ qw/def def/ ],
-	[ qw/card card/ ],
+    det => [
+	dem  => 'dem',
+	ind  => 'ind',
+	poss => 'poss',
+	int  => 'int',
+	excl => 'excl',
+	part => 'part',
+	def  => 'def',
+	card => 'card',
     ],
-    adj_type_type => [
-	[ qw/qual qual/ ],
-	[ qw/ord ord/ ],
-	[ qw/ind ind/ ],
-	[ qw/int int/ ],
-	[ qw/card card/ ],
+    adj => [
+	qual => 'qual',
+	ord  => 'ord',
+	ind  => 'ind',
+	int  => 'int',
+	card => 'card',
     ],
-    noun_type_type => [ 
-	[ qw/C common/ ],
-	[ qw/P proper/ ],
-	[ qw/card ord/ ],
+    noun => [ 
+	C    => 'common',
+	P    => 'proper',
+	card => 'ord',
     ],
-    pron_type_type => [
-    	[ qw/dem dem/ ],
-	[ qw/rel rel/ ],
-	[ qw/ind ind/ ],
-	[ qw/poss poss/ ],
-	[ qw/int int/ ],
+    pron => [
+    	dem  => 'dem',
+	rel  => 'rel',
+	ind  => 'ind',
+	poss => 'poss',
+	int  => 'int',
     ],
-    mode_type => [ 
-	[ qw/C cond/ ],
-    	[ qw/I ind/ ],
-	[ qw/F ind/ ],
-	[ qw/G part/ ],
-	[ qw/J ind/ ],
-	[ qw/K part/ ],
-	[ qw/P ind/ ],
-	[ qw/S subj/ ],
-	[ qw/T subj/ ],
-	[ qw/Y imp/ ],
+    mode => [ 
+	C => 'cond',
+    	I => 'ind',
+	F => 'ind',
+	G => 'part',
+	J => 'ind',
+	K => 'part',
+	P => 'ind',
+	S => 'subj',
+	T => 'subj',
+	Y => 'imp',
     ],
-    tense_type => [ 
-	[ qw/C pres/ ],
-    	[ qw/I imp/ ],
-	[ qw/F fut/ ],
-	[ qw/G pres/ ],
-	[ qw/J past/ ],
-	[ qw/K past/ ],
-	[ qw/P pres/ ],
-	[ qw/S pres/ ],
-	[ qw/T imp/ ],
-	[ qw/Y pres/ ],
+    tense => [ 
+	C => 'pres',
+    	I => 'imp',
+	F => 'fut',
+	G => 'pres',
+	J => 'past',
+	K => 'past',
+	P => 'pres',
+	S => 'pres',
+	T => 'imp',
+	Y => 'pres',
     ],
-    pers_type => [
-	[ qw/1 1/ ],
-	[ qw/2 2/ ],
-	[ qw/3 3/ ],
+    pers => [
+	1 => '1',
+	2 => '2',
+	3 => '3',
     ],
-    gender_type => [
-	[ qw/m masc/ ],
-	[ qw/f fem/ ],
+    gender => [
+	m => 'masc',
+	f => 'fem',
     ],
-    num_type => [
-	[ qw/p pl/ ],
-	[ qw/s sing/ ],
+    num => [
+	p => 'pl',
+	s => 'sing',
     ],
-    case_type => [
-	[ qw/obj dat/ ],
-	[ qw/obj gen/ ],
-	[ qw/obj obl/ ],
-	[ qw/obj acc/ ],
-	[ qw/refl ref/ ],
-	[ qw/suj nom/ ],
+    case => [
+	obj  => 'dat',
+	obj  => 'gen',
+	obj  => 'obl',
+	obj  => 'acc',
+	refl => 'ref',
+	suj  => 'nom',
     ]
 );
 
 __PACKAGE__->_init();
 
 sub tag2structure {
-    my ($class, $tag) = @_;
+    my ($class, $tag_string) = @_;
 
     # fail fast
-    return unless $tag;
+    return unless $tag_string;
 
-    # split tag in parts
-    my @tokens = split(/-/, $tag, 3);
+    # split tag in tokens
+    my @tokens = split(/-/, $tag_string, 3);
     $#tokens = 2 if $#tokens < 2;
     push(@tokens, split(//, pop(@tokens))) if $tokens[-1];
 
     # convert special values
-    @tokens = map { defined $_ ? $_ : '' } @tokens;
+    @tokens = map {
+	$_ ? [ $_ ] : $_
+    } @tokens;
+
+    my $tag = Lingua::TagSet::Tag->new(@tokens);
 
     # call generic routine
-    return $class->SUPER::tag2structure(\@tokens, no_strict_align => 1);
+    return $class->SUPER::tag2structure($tag, no_strict_align => 1);
 }
 
 sub structure2tag {
     my ($class, $structure) = @_;
 
     # call generic routine
-    my @tokens = $class->SUPER::structure2tag($structure);
+    my $tag = $class->SUPER::structure2tag($structure);
+    my @tokens = $tag->get_tokens();
 
     # force minimum length
     $#tokens = 2 if $#tokens < 2;
 
     # handle special cases
-    @tokens =
-	map { ref $_ eq 'ARRAY' ? join('', @$_) : $_ }
-	map { $_ ? $_ : '' }
-	@tokens;
+    @tokens = map {
+	$_ ?       # known value
+	    $#$_ ? # multiple values
+		join('', @$_) :
+		$_->[0]
+	    : ''
+    } @tokens;
 
     # join tokens in tag
-    my $tag = join('-', $tokens[0], $tokens[1], join('', @tokens[2 .. $#tokens]));
+    my $tag_string = join('-', $tokens[0], $tokens[1], join('', @tokens[2 .. $#tokens]));
 
-    return $tag;
+    return $tag_string;
 }
 
 =head1 COPYRIGHT AND LICENSE

@@ -1,4 +1,4 @@
-# $Id: Makefile.PL,v 1.2 2004/04/16 13:31:38 guillaume Exp $
+# $Id: Makefile.PL,v 1.3 2004/06/11 11:33:18 rousse Exp $
 
 use ExtUtils::MakeMaker;
 
@@ -7,7 +7,7 @@ WriteMakefile(
     'VERSION_FROM' => 'lib/Lingua/TagSet.pm',
     'AUTHOR'       => 'Guillaume Rousse',
     'PREREQ_PM'    => {
-	'Lingua::Features' => 0.2,
+	'Lingua::Features' => 0.3,
 	'Memoize'          => 0
     }
 );
