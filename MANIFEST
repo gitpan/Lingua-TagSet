@@ -1,0 +1,16 @@
+ChangeLog
+feature2multext
+feature2talana
+lib/Lingua/TagSet.pm
+lib/Lingua/TagSet/Multext.pm
+lib/Lingua/TagSet/Talana.pm
+Makefile.PL
+MANIFEST			This list of files
+META.yml
+multext
+multext2feature
+README
+t/multext.t
+t/talana.t
+talana
+talana2feature
