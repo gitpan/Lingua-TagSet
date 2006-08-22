@@ -1,4 +1,4 @@
-# $Id: TreeTagger.pm,v 1.4 2004/06/11 11:36:57 rousse Exp $
+# $Id: TreeTagger.pm,v 1.6 2006/08/22 14:21:55 rousse Exp $
 package Lingua::TagSet::TreeTagger;
 
 =head1 NAME
@@ -12,113 +12,114 @@ use strict;
 
 our @id_maps = (
     {
-	features => { cat => 'abr' },
-	tokens   => [ 'ABR' ],
+        features => { cat => 'abr' },
+        tokens   => [ 'ABR' ],
     },
     {
-	features => { cat => 'adj' },
-	tokens   => [ 'ADJ' ],
+        features => { cat => 'adj' },
+        tokens   => [ 'ADJ' ],
     },
     {
-	features => { cat => 'adv' },
-	tokens   => [ 'ADV' ]
+        features => { cat => 'adv' },
+        tokens   => [ 'ADV' ]
     },
     {
-	features => { cat => 'det' },
-	tokens   => [ 'DET', undef ],
-	submap   => [
-	    1 => 'type'
-	]
+        features => { cat => 'det', type => 'poss' },
+        tokens   => [ 'DET', 'POS' ],
     },
     {
-	features => { cat => 'interj' },
-	tokens   => [ 'INT' ],
+        features => { cat => 'det' },
+        tokens   => [ 'DET', 'ART' ],
     },
     {
-	features => { cat => [ 'cc', 'cs' ] },
-	tokens   => [ 'KON' ],
+        features => { cat => 'interj' },
+        tokens   => [ 'INT' ],
     },
     {
-	features => { cat => 'noun', type => 'common' },
-	tokens   => [ 'NOM' ],
+        features => { cat => [ 'cc', 'cs' ] },
+        tokens   => [ 'KON' ],
     },
     {
-	features => { cat => 'noun', type => 'proper' },
-	tokens   => [ 'NAM' ],
+        features => { cat => 'noun', type => 'common' },
+        tokens   => [ 'NOM' ],
     },
     {
-	features => { cat => [ 'noun', 'adj', 'det' ] },
-	tokens   => [ 'NUM' ],
+        features => { cat => 'noun', type => 'proper' },
+        tokens   => [ 'NAM' ],
     },
     {
-	features => { cat => 'pron' },
-	tokens   => [ 'PRO', undef ],
-	submap   => [
-	    1 => 'type'
-	]
+        features => { cat => [ 'noun', 'adj', 'det' ] },
+        tokens   => [ 'NUM' ],
     },
     {
-	features => { cat => 'ponct' },
-	tokens   => [ 'PUN' ],
+        features => { cat => 'pron' },
+        tokens   => [ 'PRO', undef ],
+        submap   => [
+            1 => 'type'
+        ]
     },
     {
-	features => { cat => 'prep' },
-	tokens   => [ 'PRP' ],
+        features => { cat => 'ponct' },
+        tokens   => [ 'PUN' ],
     },
     {
-	features => { cat => 'ponct' },
-	tokens   => [ 'SENT' ],
+        features => { cat => 'prep' },
+        tokens   => [ 'PRP' ],
     },
     {
-	features => { cat => 'x' },
-	tokens   => [ 'SYM' ],
+        features => { cat => 'pp' },
+        tokens   => [ 'SENT' ],
     },
     {
-	features => { cat => 'verb' },
-	tokens   => [ 'VER', undef ],
-	submap   => [ 
-	    1 => 'mode',
-	    1 => 'tense'
-	]
+        features => { cat => 'x' },
+        tokens   => [ 'SYM' ],
+    },
+    {
+        features => { cat => 'verb' },
+        tokens   => [ 'VER', undef ],
+        submap   => [ 
+            1 => 'mode',
+            1 => 'tense'
+        ]
     },
 );
 
 our %value_maps = (
     det => [
-	POS => 'poss',
+        POS => 'poss',
     ],
     pron => [
-    	DEM => 'dem',
-	REL => 'rel',
-	IND => 'ind',
-	POS => 'poss',
-	PER => 'pers',
+        DEM => 'dem',
+        REL => 'rel',
+        IND => 'ind',
+        POS => 'poss',
+        PER => 'pers',
     ],
     mode => [ 
-	cond => 'cond',
-    	futu => 'ind',
-	impe => 'imp',
-	impf => 'ind',
-	infi => 'inf',
-	pper => 'part',
-	ppre => 'part',
-	pres => 'ind',
-	simp => 'ind',
-	subi => 'subj',
-	subp => 'subj',
+        cond => 'cond',
+        futu => 'ind',
+        impe => 'imp',
+        impf => 'ind',
+        infi => 'inf',
+        pper => 'part',
+        ppre => 'part',
+        pres => 'ind',
+        simp => 'ind',
+        subi => 'subj',
+        subp => 'subj',
     ],
     tense => [
-	cond => 'pres',
-    	futu => 'fut',
-	impe => 'pres',
-	impf => 'imp',
-	infi => 'pres',
-	pper => 'past',
-	ppre => 'pres',
-	pres => 'pres',
-	simp => 'past',
-	subi => 'imp',
-	subp => 'pres',
+        cond => 'pres',
+        futu => 'fut',
+        impe => 'pres',
+        impf => 'imp',
+        infi => 'pres',
+        pper => 'past',
+        ppre => 'pres',
+        pres => 'pres',
+        simp => 'past',
+        subi => 'imp',
+        subp => 'pres',
     ],
 );
 
@@ -135,7 +136,7 @@ sub tag2structure {
 
     # convert special values
     @tokens = map {
-	$_ ? [ $_ ] : undef
+        $_ ? [ $_ ] : undef
     } @tokens;
 
     my $tag = Lingua::TagSet::Tag->new(@tokens);
@@ -153,11 +154,11 @@ sub structure2tag {
 
     # convert special values
     @tokens = map {
-	$_ ?       # known value
-	    $#$_ ? # multiple values
-		join('|', @$_) :
-		$_->[0]
-	    : ''
+        $_ ?       # known value
+            $#$_ ? # multiple values
+                join('|', @$_) :
+                $_->[0]
+            : ''
     } @tokens;
 
     # join tokens in tag
@@ -168,7 +169,7 @@ sub structure2tag {
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2004, INRIA.
+Copyright (C) 2004-2006, INRIA.
 
 This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
 

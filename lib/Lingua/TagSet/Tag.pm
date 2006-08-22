@@ -1,4 +1,4 @@
-# $Id: Tag.pm,v 1.2 2004/05/18 16:07:14 rousse Exp $
+# $Id: Tag.pm,v 1.3 2006/08/22 14:20:56 rousse Exp $
 package Lingua::TagSet::Tag;
 
 =head1 NAME
@@ -22,7 +22,7 @@ sub new {
     my ($class, @tokens) = @_;
 
     my $self = bless {
-	_tokens   => []
+        _tokens   => []
     }, $class;
 
     $self->set_tokens(@tokens) if @tokens;
@@ -58,7 +58,7 @@ sub set_tokens {
 
     # set tokens
     for my $id (0 .. $#tokens) {
-	$self->set_token($id, $tokens[$id]);
+        $self->set_token($id, $tokens[$id]);
     }
 }
 
@@ -89,14 +89,14 @@ sub set_token {
     return unless defined $id;
 
     if ($values) {
-	my %values;
-	$values = [ $values ] unless ref $values eq 'ARRAY';
-	foreach my $value (@{$values}) {
-	    $values{$value} = $value;
-	}
-	$self->{_tokens}->[$id] = [ sort keys %values ];
+        my %values;
+        $values = [ $values ] unless ref $values eq 'ARRAY';
+        foreach my $value (@{$values}) {
+            $values{$value} = $value;
+        }
+        $self->{_tokens}->[$id] = [ sort keys %values ];
     } else {
-	$self->{_tokens}->[$id] = undef;
+        $self->{_tokens}->[$id] = undef;
     }
 }
 
@@ -112,14 +112,14 @@ sub insert_token {
     return unless defined $id;
 
     if ($values) {
-	my %values;
-	$values = [ $values ] unless ref $values eq 'ARRAY';
-	foreach my $value (@{$values}) {
-	    $values{$value} = $value;
-	}
-	splice @{$self->{_tokens}}, $id, 0, [ sort keys %values ];
+        my %values;
+        $values = [ $values ] unless ref $values eq 'ARRAY';
+        foreach my $value (@{$values}) {
+            $values{$value} = $value;
+        }
+        splice @{$self->{_tokens}}, $id, 0, [ sort keys %values ];
     } else {
-	splice @{$self->{_tokens}}, $id, 0, undef;
+        splice @{$self->{_tokens}}, $id, 0, undef;
     }
 }
 

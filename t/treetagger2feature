@@ -18,7 +18,7 @@ PRP	cat@prep
 PRP:det	cat@prep
 PUN	cat@ponct
 PUN:cit	cat@ponct
-SENT	cat@ponct
+SENT	cat@pp
 SYM	cat@x
 VER:cond	cat@verb mode@cond tense@pres
 VER:futu	cat@verb mode@ind tense@fut

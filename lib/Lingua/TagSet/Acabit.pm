@@ -1,4 +1,4 @@
-# $Id: Acabit.pm,v 1.2 2004/06/11 11:37:46 rousse Exp $
+# $Id: Acabit.pm,v 1.4 2006/08/22 14:21:55 rousse Exp $
 package Lingua::TagSet::Acabit;
 
 =head1 NAME
@@ -12,155 +12,155 @@ use strict;
 
 our @id_maps = (
     {
-	features => { cat => 'adj' },
-	tokens   => [ 'ADJ', undef, undef ],
-	submap   => [
-	    1 => 'gender',
-	    2 => 'num'
-	]
+        features => { cat => 'adj' },
+        tokens   => [ 'ADJ', undef, undef ],
+        submap   => [
+            1 => 'gender',
+            2 => 'num'
+        ]
     },
     {
-	features => { cat => [ 'adv', 'advneg' ] },
-	tokens   => [ 'ADV' ]
+        features => { cat => [ 'adv', 'advneg' ] },
+        tokens   => [ 'ADV' ]
     },
     {
-	features => { cat => [ 'noun', 'adj', 'det' ] },
-	tokens   => [ 'CAR' ],
+        features => { cat => [ 'noun', 'adj', 'det' ] },
+        tokens   => [ 'CAR' ],
     },
     {
-	features => { cat => 'cc' },
-	tokens   => [ 'COO' ],
+        features => { cat => 'cc' },
+        tokens   => [ 'COO' ],
     },
     {
-	features => { cat => 'det' },
-	tokens   => [ [ 'DTN', 'DTC' ], undef, undef ],
-	submap   => [
-	    1 => 'gender',
-	    2 => 'num'
-	]
+        features => { cat => 'det' },
+        tokens   => [ [ 'DTN', 'DTC' ], undef, undef ],
+        submap   => [
+            1 => 'gender',
+            2 => 'num'
+        ]
     },
     {
-	features => { cat => 'interj' },
-	tokens   => [ 'INJ' ],
+        features => { cat => 'interj' },
+        tokens   => [ 'INJ' ],
     },
     {
-	features => { cat => 'ponct' },
-	tokens   => [ [ '?', '!', '.', ';', ':' ] ],
+        features => { cat => 'ponct' },
+        tokens   => [ [ '?', '!', '.', ';', ':' ] ],
     },
     {
-	features => { cat => 'prep' },
-	tokens   => [ 'PREP' ],
+        features => { cat => 'prep' },
+        tokens   => [ 'PREP' ],
     },
     {
-	features => { cat => 'pron', type => 'cli' },
-	tokens   => [ 'PRV', undef, undef, undef, undef ],
-	submap   => [
-	    1 => 'pers',
-	    2 => 'gender',
-	    3 => 'num', 
-	    4 => 'case'
-	]
+        features => { cat => 'pron', type => 'cli' },
+        tokens   => [ 'PRV', undef, undef, undef, undef ],
+        submap   => [
+            1 => 'pers',
+            2 => 'gender',
+            3 => 'num', 
+            4 => 'case'
+        ]
     },
     {
-	features => { cat => 'pron' },
-	tokens   => [ 'PRO', undef, undef, undef, undef ],
-	submap   => [
-	    1 => 'pers',
-	    2 => 'gender',
-	    3 => 'num', 
-	    4 => 'case'
-	]
+        features => { cat => 'pron' },
+        tokens   => [ 'PRO', undef, undef, undef, undef ],
+        submap   => [
+            1 => 'pers',
+            2 => 'gender',
+            3 => 'num', 
+            4 => 'case'
+        ]
     },
     {
-	features => { cat => 'pron', type => 'rel' },
-	tokens   => [ 'REL', undef, undef ],
-	submap   => [
-	    1 => 'gender',
-	    2 => 'num'
-	]
+        features => { cat => 'pron', type => 'rel' },
+        tokens   => [ 'REL', undef, undef ],
+        submap   => [
+            1 => 'gender',
+            2 => 'num'
+        ]
     },
     {
-	features => { cat => 'cs' },
-	tokens   => [ 'SUB' ],
+        features => { cat => 'cs' },
+        tokens   => [ 'SUB' ],
     },
     {
-	features => { cat => 'noun', type => 'common' },
-	tokens   => [ 'SBC', undef, undef ],
-	submap   => [
-	    1 => 'gender',
-	    2 => 'num'
-	]
+        features => { cat => 'noun', type => 'common' },
+        tokens   => [ 'SBC', undef, undef ],
+        submap   => [
+            1 => 'gender',
+            2 => 'num'
+        ]
     },
     {
-	features => { cat => 'noun', type => 'proper' },
-	tokens   => [ 'SBP' ],
+        features => { cat => 'noun', type => 'proper' },
+        tokens   => [ 'SBP' ],
     },
     {
-	features => { cat => 'verb', mode => 'inf' },
-	tokens   => [ 'VNCFF' ],
+        features => { cat => 'verb', mode => 'inf' },
+        tokens   => [ 'VNCFF' ],
     },
     {
-	features => { cat => 'verb', mode => 'part', tense => 'pres' },
-	tokens   => [ 'VNCNT' ],
+        features => { cat => 'verb', mode => 'part', tense => 'pres' },
+        tokens   => [ 'VNCNT' ],
     },
     {
-	features => { cat => 'verb', mode => 'part', tense => 'past' },
-	tokens   => [ [ 'VPAR', 'ADJ1PAR', 'ADJ2PAR', 'EPAR' ] , undef, undef ],
-	submap   => [
-	    1 => 'gender',
-	    2 => 'num'
-	]
+        features => { cat => 'verb', mode => 'part', tense => 'past' },
+        tokens   => [ [ 'VPAR', 'ADJ1PAR', 'ADJ2PAR', 'EPAR' ] , undef, undef ],
+        submap   => [
+            1 => 'gender',
+            2 => 'num'
+        ]
     },
     {
-	features => { cat => 'verb' },
-	tokens   => [ 'VCJ', undef, undef, undef ],
-	submap   => [
-	    1 => 'pers',
-	    2 => 'num',
-	    3 => 'tense',
-	    4 => 'mode'
-	]
+        features => { cat => 'verb' },
+        tokens   => [ 'VCJ', undef, undef, undef ],
+        submap   => [
+            1 => 'pers',
+            2 => 'num',
+            3 => 'tense',
+            4 => 'mode'
+        ]
     },
     {
-	features => { cat => 'x' },
-	tokens   => [ [ 'SYM', 'FGW' ] ],
+        features => { cat => 'x' },
+        tokens   => [ [ 'SYM', 'FGW' ] ],
     },
     {
-	features => { cat => 'abr' },
-	tokens   => [ 'ABR' ],
+        features => { cat => 'abr' },
+        tokens   => [ 'ABR' ],
     },
 );
 
 our %value_maps = (
     gender => [
-	m => 'masc',
-	f => 'fem',
+        m => 'masc',
+        f => 'fem',
     ],
     num => [
-	p => 'pl',
-	s => 'sing',
+        p => 'pl',
+        s => 'sing',
     ],
     pers => [
-	'1p' => '1',
-	'2p' => '2',
-	'3p' => '3',
+        '1p' => '1',
+        '2p' => '2',
+        '3p' => '3',
     ],
     mode => [ 
-    	ind   => 'ind',
-	subj  => 'subj',
-	imper => 'imp',
-	cond  => 'cond',
+        ind   => 'ind',
+        subj  => 'subj',
+        imper => 'imp',
+        cond  => 'cond',
     ],
     tense => [
-	impft => 'imp',
-	pst   => 'pres',
-	ps    => 'past',
+        impft => 'imp',
+        pst   => 'pres',
+        ps    => 'past',
     ],
     case => [
-	a => 'acc',
-	d => 'dat',
-	n => 'nom',
-	o => 'obl',
+        a => 'acc',
+        d => 'dat',
+        n => 'nom',
+        o => 'obl',
     ],
 );
 
@@ -177,11 +177,11 @@ sub tag2structure {
 
     # convert special values
     @tokens = map {
-	$_ ne '_' ?
-	    $_ =~ /{(.*)}/ ?
-		[ split(/\|/, $1) ] :
-		[ $_ ]
-	    : undef
+        $_ ne '_' ?
+        $_ =~ /{(.*)}/ ?
+        [ split(/\|/, $1) ] :
+        [ $_ ]
+        : undef
     } @tokens;
 
     my $tag = Lingua::TagSet::Tag->new(@tokens);
@@ -199,11 +199,11 @@ sub structure2tag {
 
     # convert special values
     @tokens = map {
-	$_ ?       # known value
-	    $#$_ ? # multiple values
-		'{' . join('|', @$_) . '}' :
-		$_->[0]
-	    : '_'
+        $_ ?       # known value
+        $#$_ ? # multiple values
+        '{' . join('|', @$_) . '}' :
+        $_->[0]
+        : '_'
     } @tokens;
 
     # join tokens in tag
@@ -214,7 +214,7 @@ sub structure2tag {
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2004, INRIA.
+Copyright (C) 2004-2006, INRIA.
 
 This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
 

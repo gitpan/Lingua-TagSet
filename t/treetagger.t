@@ -1,15 +1,15 @@
 #!/usr/bin/perl
-# $Id: treetagger.t,v 1.1 2004/04/16 13:27:35 guillaume Exp $
+# $Id: treetagger.t,v 1.2 2005/03/23 10:30:49 rousse Exp $
 
 use Lingua::TagSet::TreeTagger;
 use Test::More;
 use strict;
 
 # compute plan
-open(T2S, 'treetagger2feature') or die "unable to open treetagger2feature: $!";
+open(T2S, 't/treetagger2feature') or die "unable to open treetagger2feature: $!";
 my @tags2strings = <T2S>;
 close(T2S);
-open(S2T, 'feature2treetagger') or die "unable to open feature2treetagger: $!";
+open(S2T, 't/feature2treetagger') or die "unable to open feature2treetagger: $!";
 my @strings2tags = <S2T>;
 close(S2T);
 plan tests => @tags2strings + @strings2tags;

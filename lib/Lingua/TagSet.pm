@@ -1,4 +1,4 @@
-# $Id: TagSet.pm,v 1.8 2004/06/11 11:35:18 rousse Exp $
+# $Id: TagSet.pm,v 1.12 2006/08/22 14:22:59 rousse Exp $
 package Lingua::TagSet;
 
 =head1 NAME
@@ -7,7 +7,7 @@ Lingua::TagSet - Natural language tagset conversion
 
 =head1 VERSION
 
-Version 0.3
+Version 0.3.1
 
 =head1 DESCRIPTION
 
@@ -34,7 +34,7 @@ use Lingua::TagSet::Tag;
 use strict;
 use warnings;
 
-our $VERSION = '0.3';
+our $VERSION = '0.3.1';
 
 my (%tag2string, %string2tag);
 memoize 'tag2string', SCALAR_CACHE => [ HASH => \%tag2string ];
@@ -57,30 +57,30 @@ sub _init {
 
     foreach my $map (@{$class . '::id_maps'}) {
 
-	# token to feature: tree of tokens valued by mappings
-	my $token_leaf;
-	$token_leaf->{features} = $map->{features};
-	$token_leaf->{submap}   = { _index(@{$map->{submap}}) } if $map->{submap};
-	$token_leaf->{specific} = ref $map->{tokens}->[0] ne 'ARRAY';
-	my $tag        = Lingua::TagSet::Tag->new(@{$map->{tokens}});
-	my @token_list = _get_tokens_list($tag);
-	_build_tree($tokens_tree, \@token_list, 0, $token_leaf);
+        # token to feature: tree of tokens valued by mappings
+        my $token_leaf;
+        $token_leaf->{features} = $map->{features};
+        $token_leaf->{submap}   = { _index(@{$map->{submap}}) } if $map->{submap};
+        $token_leaf->{specific} = ref $map->{tokens}->[0] ne 'ARRAY';
+        my $tag        = Lingua::TagSet::Tag->new(@{$map->{tokens}});
+        my @token_list = _get_tokens_list($tag);
+        _build_tree($tokens_tree, \@token_list, 0, $token_leaf);
 
-	# feature to token: tree of features valued by mappings
-	my $feature_leaf;
-	$feature_leaf->{tokens} = $map->{tokens};
-	$feature_leaf->{submap} = { _index(reverse @{$map->{submap}}) } if $map->{submap};
-	$feature_leaf->{specific} = ref $map->{features}->{cat} ne 'ARRAY';
-	my $structure = Lingua::Features::Structure->new(%{$map->{features}});
-	my @feature_list = _get_features_list($structure);
-	_build_tree($features_tree, \@feature_list, 0, $feature_leaf);
+        # feature to token: tree of features valued by mappings
+        my $feature_leaf;
+        $feature_leaf->{tokens} = $map->{tokens};
+        $feature_leaf->{submap} = { _index(reverse @{$map->{submap}}) } if $map->{submap};
+        $feature_leaf->{specific} = ref $map->{features}->{cat} ne 'ARRAY';
+        my $structure = Lingua::Features::Structure->new(%{$map->{features}});
+        my @feature_list = _get_features_list($structure);
+        _build_tree($features_tree, \@feature_list, 0, $feature_leaf);
     }
 
     while (my ($type, $map) = each %{$class . '::value_maps'}) {
-	# token to feature: feature values indexed by token value
-	$tokens_table->{$type} = { _index(@{$map}) };
-	# feature to token: token values indexed by feature value
-	$features_table->{$type} = { _index(reverse @{$map}) };
+        # token to feature: feature values indexed by token value
+        $tokens_table->{$type} = { _index(@{$map}) };
+        # feature to token: token values indexed by feature value
+        $features_table->{$type} = { _index(reverse @{$map}) };
     }
 
     $tokens_trees{$class}    = $tokens_tree;
@@ -93,9 +93,9 @@ sub _index {
     my (@list) = @_;
     my %hash;
     while (@list) {
-	my $key   = shift @list;
-	my $value = shift @list;
-	push(@{$hash{$key}}, $value); 
+        my $key   = shift @list;
+        my $value = shift @list;
+        push(@{$hash{$key}}, $value); 
     }
     return %hash;
 }
@@ -144,38 +144,38 @@ sub tag2structure {
     # compute other features
     my $submap = $id_map->{submap};
     if ($submap) {
-	foreach my $token_id (sort keys %{$submap}) {
-	    my $token_values = $tag->get_token($token_id);
-	    next unless $token_values; # unknown value
+        foreach my $token_id (sort keys %{$submap}) {
+            my $token_values = $tag->get_token($token_id);
+            next unless $token_values; # unknown value
 
-	    my $feature_ids = $submap->{$token_id};
-	    foreach my $feature_id (@{$feature_ids}) {
-		my $type = $structure->get_type()->{$feature_id};
-		die "no feature $feature_id" unless $type;
+            my $feature_ids = $submap->{$token_id};
+            foreach my $feature_id (@{$feature_ids}) {
+                my $type = $structure->get_type()->{$feature_id};
+                die "no feature $feature_id" unless $type;
 
-		my $type_id   = $type->id();
-		my $value_map = $table->{$type_id};
-		die "no value map for type $type_id" unless $value_map;
+                my $type_id   = $type->id();
+                my $value_map = $table->{$type_id};
+                die "no value map for type $type_id" unless $value_map;
 
-		my @feature_values;
-		foreach my $token_value (@{$token_values}) {
-		    push(@feature_values, @{$value_map->{$token_value}}) if $value_map->{$token_value};
+                my @feature_values;
+                foreach my $token_value (@{$token_values}) {
+                    push(@feature_values, @{$value_map->{$token_value}}) if $value_map->{$token_value};
 
-		}
+                }
 
-		if (@feature_values) {
-		    $structure->set_feature($feature_id, \@feature_values);
-		} else {
-		    if ($args{no_strict_align}) {
-			# some tagset skip unknown values
-			$tag->insert_token($token_id, undef);
-		    } else {
-			# unknown value
-			$structure->set_feature($feature_id, undef);
-		    }
-		}
-	    }
-	}
+                if (@feature_values) {
+                    $structure->set_feature($feature_id, \@feature_values);
+                } else {
+                    if ($args{no_strict_align}) {
+                        # some tagset skip unknown values
+                        $tag->insert_token($token_id, undef);
+                    } else {
+                        # unknown value
+                        $structure->set_feature($feature_id, undef);
+                    }
+                }
+            }
+        }
     }
 
     return $structure;
@@ -199,15 +199,15 @@ sub structure2tag {
     # find matching maps
     my @features = _get_features_list($structure);
     my @id_maps = _parse_tree($tree, \@features, 0);
-    return unless @id_maps;
+    return Lingua::TagSet::Tag->new() unless @id_maps;
 
     # select most relevant one
     my $id_map = _select_alternative_maps(
-	\@id_maps,
-	[
-	    sub { return $_->{specific} }, # prefer specific maps
-	    sub { return $_->{submap} }    # prefer exhaustive maps
-	]
+        \@id_maps,
+        [
+        sub { return $_->{specific} }, # prefer specific maps
+        sub { return $_->{submap} }    # prefer exhaustive maps
+        ]
     );
 
     # create base tag
@@ -216,42 +216,42 @@ sub structure2tag {
     # compute other tokens
     my $submap = $id_map->{submap};
     if ($submap) {
-	foreach my $feature_id (%{$submap}) {
-	    my $feature_values = $structure->get_feature($feature_id);
-	    next unless $feature_values; # unknown value
+        foreach my $feature_id (%{$submap}) {
+            my $feature_values = $structure->get_feature($feature_id);
+            next unless $feature_values; # unknown value
 
-	    my $type = $structure->get_type()->{$feature_id};
-	    die "no feature $feature_id" unless $type;
+            my $type = $structure->get_type()->{$feature_id};
+            die "no feature $feature_id" unless $type;
 
-	    my $type_id   = $type->id();
-	    my $value_map = $table->{$type_id};
-	    die "no value map for type $type_id" unless $value_map;
+            my $type_id   = $type->id();
+            my $value_map = $table->{$type_id};
+            die "no value map for type $type_id" unless $value_map;
 
-	    my $token_ids = $submap->{$feature_id};
-	    foreach my $token_id (@{$token_ids}) {
-		my @token_values;
-		foreach my $feature_value (@{$feature_values}) {
-		    push(@token_values, @{$value_map->{$feature_value}}) if $value_map->{$feature_value};
-		}
+            my $token_ids = $submap->{$feature_id};
+            foreach my $token_id (@{$token_ids}) {
+                my @token_values;
+                foreach my $feature_value (@{$feature_values}) {
+                    push(@token_values, @{$value_map->{$feature_value}}) if $value_map->{$feature_value};
+                }
 
-		# take care of multiple-mapped features
-		my $current_values = $tag->get_token($token_id);
-		if ($current_values) {
-		    # keep only intersection of two sets
-		    my (%union, %intersection);
-		    foreach my $value (@token_values, @{$current_values}) {
-			$union{$value}++ && $intersection{$value}++;
-		    }
-		    @token_values = keys %intersection;
-		}
+                # take care of multiple-mapped features
+                my $current_values = $tag->get_token($token_id);
+                if ($current_values) {
+                    # keep only intersection of two sets
+                    my (%union, %intersection);
+                    foreach my $value (@token_values, @{$current_values}) {
+                        $union{$value}++ && $intersection{$value}++;
+                    }
+                    @token_values = keys %intersection;
+                }
 
-		if (@token_values) {
-		    $tag->set_token($token_id, \@token_values);
-		} else {
-		    $tag->set_token($token_id, undef);
-		}
-	    }
-	}
+                if (@token_values) {
+                    $tag->set_token($token_id, \@token_values);
+                } else {
+                    $tag->set_token($token_id, undef);
+                }
+            }
+        }
     }
 
     return $tag;
@@ -265,20 +265,20 @@ sub _build_tree {
 
     # construct a branch for each value
     foreach my $value (@{$values}) {
-	# add a new node
-	$node->{$value} = {} unless $node->{$value};
+        # add a new node
+        $node->{$value} = {} unless $node->{$value};
 
-	if ($index != $#$list) {
-	    # build tree further
-	    _build_tree($node->{$value}, $list, ++$index, $leaf);
-	} else {
-	    # add leaves
-	    if ($node->{$value}->{_map}) {
-		push (@{$node->{$value}->{_map}}, $leaf);
-	    } else {
-		$node->{$value}->{_map} = [ $leaf ]
-	    }
-	}
+        if ($index != $#$list) {
+            # build tree further
+            _build_tree($node->{$value}, $list, ++$index, $leaf);
+        } else {
+            # add leaves
+            if ($node->{$value}->{_map}) {
+                push (@{$node->{$value}->{_map}}, $leaf);
+            } else {
+                $node->{$value}->{_map} = [ $leaf ]
+            }
+        }
     }
 }
 
@@ -292,21 +292,21 @@ sub _parse_tree {
 
     # browse each potential specific branch if values are known
     if ($values) {
-	foreach my $value (@{$values}) {
-	    if ($node->{$value}) {
-		push(@results, _parse_tree($node->{$value}, $list, ++$index));
-	    }
-	}
+        foreach my $value (@{$values}) {
+            if ($node->{$value}) {
+                push(@results, _parse_tree($node->{$value}, $list, ++$index));
+            }
+        }
     }
 
     # browse generic branch if present
     if ($node->{_any}) {
-	push(@results, _parse_tree($node->{_any}, $list, ++$index));
+        push(@results, _parse_tree($node->{_any}, $list, ++$index));
     }
 
     # return current maps if no other results found sofar
     unless (@results) {
-	@results = @{$node->{_map}} if $node->{_map};
+        @results = @{$node->{_map}} if $node->{_map};
     }
 
     # otherwise return current result
@@ -323,34 +323,34 @@ sub _select_alternative_maps {
 
     # keep filtering while criterias available
     if ($function) {
-	my @filtered_maps = grep { $function->($_) } @$maps;
-	return @filtered_maps ?
-	    _select_alternative_maps(\@filtered_maps, $functions) :
-	    _select_alternative_maps($maps, $functions) ;
+        my @filtered_maps = grep { $function->($_) } @$maps;
+        return @filtered_maps ?
+        _select_alternative_maps(\@filtered_maps, $functions) :
+        _select_alternative_maps($maps, $functions) ;
     }
 
     # otherwise merge remaining mappings
     my $max = 0;
     for my $map (@$maps) {
-	$max = $#{$map->{tokens}} if $#{$map->{tokens}} > $max;
+        $max = $#{$map->{tokens}} if $#{$map->{tokens}} > $max;
     }
 
     my @tokens;
     for (my $i = 0; $i <= $max; $i++) {
-	foreach my $map (@$maps) {
-	    my $item = $map->{tokens}->[$i];
-	    if ($item) {
-		if (ref $item eq 'ARRAY') {
-		    push(@{$tokens[$i]}, @{$item});
-		} else {
-		    push(@{$tokens[$i]}, $item);
-		}
-	    }
-	}
+        foreach my $map (@$maps) {
+            my $item = $map->{tokens}->[$i];
+            if ($item) {
+                if (ref $item eq 'ARRAY') {
+                    push(@{$tokens[$i]}, @{$item});
+                } else {
+                    push(@{$tokens[$i]}, $item);
+                }
+            }
+        }
     }
 
     return {
-	tokens => \@tokens
+        tokens => \@tokens
     }
 }
 
@@ -385,7 +385,7 @@ sub string2tag {
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2004, INRIA.
+Copyright (C) 2004-2006, INRIA.
 
 This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
 
