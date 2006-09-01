@@ -1,4 +1,4 @@
-# $Id: TagSet.pm,v 1.12 2006/08/22 14:22:59 rousse Exp $
+# $Id: TagSet.pm,v 1.13 2006/09/01 09:32:59 rousse Exp $
 package Lingua::TagSet;
 
 =head1 NAME
@@ -7,7 +7,7 @@ Lingua::TagSet - Natural language tagset conversion
 
 =head1 VERSION
 
-Version 0.3.1
+Version 0.3.2
 
 =head1 DESCRIPTION
 
@@ -34,7 +34,7 @@ use Lingua::TagSet::Tag;
 use strict;
 use warnings;
 
-our $VERSION = '0.3.1';
+our $VERSION = '0.3.2';
 
 my (%tag2string, %string2tag);
 memoize 'tag2string', SCALAR_CACHE => [ HASH => \%tag2string ];

@@ -3,7 +3,6 @@ ChangeLog
 lib/Lingua/TagSet.pm
 lib/Lingua/TagSet/Acabit.pm
 lib/Lingua/TagSet/Fastr.pm
-lib/Lingua/TagSet/Frmg.pm
 lib/Lingua/TagSet/Multext.pm
 lib/Lingua/TagSet/Tag.pm
 lib/Lingua/TagSet/Talana.pm

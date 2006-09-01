@@ -1,3 +1,7 @@
+2006-09-21 0.3.2
+
+	* remove uncomplete Lingua::TagSet::Frmg from distribution
+
 2006-08-22 0.3.1
 
 	* make ExtUtils::MakeMaker::Coverage use conditional
